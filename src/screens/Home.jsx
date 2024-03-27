@@ -1,11 +1,11 @@
 import React from 'react'
 
-const Catalog = () => {
+const Home = () => {
   return (
     <div>
-      Catalog
+      Inicio
     </div>
   )
 }
 
-export default Catalog
+export default Home
