@@ -4,7 +4,7 @@ npm install
 npm i react-router-dom
 npm i react-scroll
 npm i @chakra-ui/react @emotion/react @emotion/styled framer-motion
-npm i @chakra-ui/icons
+npm install react-icons --save
 
 Programador
 
