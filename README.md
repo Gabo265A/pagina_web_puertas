@@ -1,5 +1,6 @@
 Librerias
 
+npm install
 npm i react-scroll
 
 Programador
