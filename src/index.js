@@ -3,12 +3,21 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { ChakraProvider } from '@chakra-ui/react';
+import { ChakraProvider, ColorModeScript, CSSReset, extendTheme } from '@chakra-ui/react';
+import theme from './components/ThemeChange';
+
+const removeChakraSpace = extendTheme({
+  space: {
+    2: "0px",
+  },
+})
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ChakraProvider>
+    <ChakraProvider theme={removeChakraSpace}>
+      <CSSReset />
+      <ColorModeScript initialColorMode={theme.config.initialColorMode} />
       <App />
     </ChakraProvider>
   </React.StrictMode>
