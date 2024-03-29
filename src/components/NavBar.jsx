@@ -49,10 +49,10 @@ const NavBar = () => {
         <>
             <Flex
                 borderBottom="1px"
-                borderColor="gray.200"
+                borderColor={colorMode === 'light' ? 'gray.200' : 'gray.700'}
                 zIndex="99999"
             >
-                <Grid templateColumns={isLargerThan1256 ? "0.3fr 2fr 0.4fr 0.3fr" : isLargerThan860 ? "0.5fr 2.3fr 0.5fr" : isLargerThan640 ? "0.3fr 2.5fr 0.3fr" : "0.3fr 2.6fr 0.1fr 0.1fr"} gap={6} p={4} w="100%">
+                <Grid templateColumns={isLargerThan1256 ? "0.3fr 2fr 0.3fr 0.3fr" : isLargerThan860 ? "0.5fr 2.3fr 0.5fr" : isLargerThan640 ? "0.3fr 2.5fr 0.3fr" : "0.3fr 2.6fr 0.1fr 0.1fr"} gap={6} p={4} w="100%">
                     <Flex pt="0.2em" justifyContent="center" >
                         <a href="/"><Image src={Logo} alt="logo" w="30px" h="30px" cursor="pointer" /></a>
                         {isLargerThan860 && <a href="/"><Image src={colorMode === 'light' ? NombreNegocioLight : NombreNegocioDark} alt="logo" cursor="pointer" /></a>}
@@ -68,12 +68,12 @@ const NavBar = () => {
                     <Flex justifyContent="center" pt="0.5em">
                         {isLargerThan860 && <Icon as={FaFacebook} boxSize="1.5em" mr="1em" sx={socialMediaStyle} onClick={() => window.open('https://www.facebook.com')} />}
                         {isLargerThan860 && <Icon as={FaInstagram} boxSize="1.5em" mr="1em" sx={socialMediaStyle} onClick={() => window.open('https://www.instagram.com')} />}
-                        {isLargerThan860 && <Icon as={FaWhatsapp} boxSize="1.5em" mr="1em" sx={socialMediaStyle} onClick={() => window.open('https://www.whatsapp.com')} />}
+                        <Icon as={FaWhatsapp} boxSize="1.5em" mr="1em" sx={socialMediaStyle} onClick={() => window.open('https://www.whatsapp.com')} display={isLargerThan1256 ? 'none' : isLargerThan860 ? 'flex' : 'none'}/>
                         <Icon as={colorMode === 'light' ? IoMoon : FaSun} boxSize="1.5em" sx={socialMediaStyle} onClick={toggleColorMode} />
                     </Flex>
-                    {!isLargerThan640 && <Flex justifyContent="center" pt="0.5em">
+                    <Flex justifyContent="center" pt="0.5em" display={isLargerThan640 ? 'none' : 'flex'}>
                         <Icon as={show ? IoClose : IoMenu} boxSize="1.5em" onClick={handleToggleShowCollapse} />
-                    </Flex>}
+                    </Flex>
                     {isLargerThan1256 && <Flex ml="none">
                         <Button variant="custom" sx={buttonStyle} leftIcon={<FaWhatsapp />} onClick={handleClickWhatsAppButton} mr="0.4em">
                             WhatsApp
