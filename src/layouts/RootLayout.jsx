@@ -1,25 +1,28 @@
 import { Outlet } from "react-router-dom"
-import NavBar from "../components/NavBar"
+import Header from "../components/Header"
 import MenuNavigation from "../components/MenuNavigation"
-import { Grid, GridItem } from "@chakra-ui/react"
+import { Grid, GridItem, useMediaQuery } from "@chakra-ui/react"
 
 const RootLayout = () => {
+  const [isLargerThan640] = useMediaQuery("(min-width: 640px)")
   return (
     <div>
       <>
         <Grid
-          templateAreas={`"header header"
+          templateAreas={isLargerThan640 ? `"header header"
                   "nav main"
-                  "nav footer"`}
-          gridTemplateColumns={'150px 1fr'}
-          h='200px'
+                  "nav footer"` : `"header header"
+                  "main main"
+                  "footer footer"`}
+          gridTemplateColumns={isLargerThan640 ? '170px 1fr' : '1fr'}
+          gridTemplateRows={'auto 1fr auto'}
           gap='1'
         >
           <GridItem pl='2' area={'header'}>
-            <NavBar />
+            <Header />
           </GridItem>
-          <GridItem pl='2' area={'nav'}>
-            <MenuNavigation />
+          <GridItem pl='2' area={'nav'} display={isLargerThan640 ? 'flex' : 'none'}>
+            <MenuNavigation ShowTitle={true} />
           </GridItem>
           <GridItem pl='2' area={'main'}>
             <Outlet />
