@@ -19,6 +19,7 @@ import Logo from "../images/logo.png"
 import NombreNegocioDark from "../images/nombre-negocio-dark.png"
 import NombreNegocioLight from "../images/nombre-negocio-light.png"
 import DrawerMenu from './DrawerMenu';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
     
@@ -61,8 +62,8 @@ const Header = () => {
             >
                 <Grid templateColumns={isLargerThan1256 ? "0.3fr 2fr 0.3fr 0.3fr" : isLargerThan860 ? "0.5fr 2.3fr 0.5fr" : isLargerThan640 ? "0.7fr 2.3fr 0.3fr" : isLargerThan420 ? "0.3fr 2.6fr 0.1fr 0.1fr" : "2.6fr 0.1fr 0.1fr"} gap={6} p={4} w="100%">
                     <Flex pt="0.2em" justifyContent={isLargerThan420 ? "center" : "left"} >
-                        <a href="/"><Image src={Logo} alt="logo" w="30px" h="30px" cursor="pointer" /></a>
-                        {(isLargerThan640 || !isLargerThan420) && <a href="/"><Image src={colorMode === 'light' ? NombreNegocioLight : NombreNegocioDark} alt="logo" cursor="pointer" /></a>}
+                        <Link to="/"><Image src={Logo} alt="logo" w="30px" h="30px" cursor="pointer" /></Link>
+                        {(isLargerThan640 || !isLargerThan420) && <Link to="/"><Image src={colorMode === 'light' ? NombreNegocioLight : NombreNegocioDark} alt="logo" cursor="pointer" /></Link>}
                     </Flex>
                     {isLargerThan420 && <Stack spacing={4}>
                         <InputGroup>
@@ -87,7 +88,7 @@ const Header = () => {
                         </Button>
                     </Flex>}
                 </Grid>
-                {show && <DrawerMenu isOpen={show} onClose={handleToggleShowCollapse} />}
+                <DrawerMenu isOpen={show} onClose={handleToggleShowCollapse} />
             </Flex >
         </>
     )
